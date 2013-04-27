@@ -1,0 +1,40 @@
+Update process of reading Nokia message (*.vmg) files - try formatting to "vmsg" format (has embedded vcf)
+	 - can't do this without updating messages written (not imported) to use embedded vcard format
+
+Add names of contacts in a different column
+	- think more about how to display 
+		- single column for contact, or multiple contact columns for From and To contacts
+		- have done single column and didn't like as when sorting messages from same contact but different numbers (also +44 vs 0...) don't appear next to one another
+
+Think about changing TextMessage from having a string number field to List<string> numbers to support multiple recipents
+	- Number property would stay and return the first number in the list
+	- Multiple constructors
+
+Add support for multiple recipients and MMS (images)
+Add support for other text message formats/phone manufacturers:
+	Samsung - PC Studio Message Manager
+	Sony Ericsson - Sony Ericsson PC Suite (*.SMS), [FJ Software MyPhoneExplorer]
+	LG - ?
+	Blackberry - ?
+	Apple - ?
+(Something for Mac OS: nova media's FoneLink software - support for multiple phones)
+	
+Document all code!!
+
+When editing, think about editing exiting listviewitem and/or message
+
+Improve cache to be keyed by Phone/MessageFolder
+Or at least to contain a list of ListViewItems - currently better to store in an array 
+as many calls insert the value into the listview.
+Limited benefits when adding or editing message - to easily add to cache collection.
+	
+Implement the following:
+	searching - within text, from/to someone, within dates
+	
+	
+##############################################
+# Implement use of Thought.Net.vCards		 #
+# class library. Try to return similar data. #
+# Will need to update the class				 #
+# TextMessageViewer.Contacts				 #
+##############################################

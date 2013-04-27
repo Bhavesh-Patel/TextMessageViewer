@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{786E78A9-A1D1-44D6-B49B-11B16DE62D54}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>TextMessageViewer</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TextMessageViewer</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>bin\Debug\TextMessageViewer.XML</DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="&quot;Bhavesh%27sWindowsControlLibrary&quot;, Version=1.0.2989.23588, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bhavesh's Utilities\Bhavesh'sWindowsControlLibrary\bin\Debug\Bhavesh'sWindowsControlLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Bhavesh%27s Utilities">
+      <Name>Bhavesh%27s Utilities</Name>
+      <HintPath>bin\Debug\Bhavesh's Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="vCardReader, Version=1.0.3004.40440, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\vCardReader\vCardReader\bin\Debug\vCardReader.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccessDatabaseMessages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Contacts.cs" />
+    <Compile Include="ContactsViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContactsViewer.Designer.cs">
+      <DependentUpon>ContactsViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportMessagesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportMessagesForm.Designer.cs">
+      <DependentUpon>ImportMessagesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MotorolaTextMessage.cs" />
+    <Compile Include="NewEditMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewEditMessage.Designer.cs">
+      <DependentUpon>NewEditMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NokiaTextMessage.cs" />
+    <Compile Include="Obsolete\ChooseFormat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Obsolete\FolderBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Obsolete\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Obsolete\MainBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MessageFolder.cs" />
+    <Compile Include="MessageFormat.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MobilePhone.cs" />
+    <Compile Include="Program.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TextMessage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TextMessageListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TextMessageListView.Designer.cs">
+      <DependentUpon>TextMessageListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TextMessageListViewItem.cs" />
+    <EmbeddedResource Include="AccessDatabaseMessages.resx">
+      <DependentUpon>AccessDatabaseMessages.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportMessagesForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ImportMessagesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewEditMessage.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>NewEditMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Obsolete\ChooseFormat.resx">
+      <DependentUpon>ChooseFormat.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Obsolete\FolderBoard.resx">
+      <DependentUpon>FolderBoard.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Obsolete\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Obsolete\MainBoard.resx">
+      <DependentUpon>MainBoard.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TextMessageListView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TextMessageListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <Content Include="App.ico" />
+    <Content Include="TODO.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
