@@ -104,38 +104,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccessDatabaseMessages.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Contacts.cs" />
-    <Compile Include="ContactsViewer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ContactsViewer.Designer.cs">
-      <DependentUpon>ContactsViewer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ImportMessagesForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ImportMessagesForm.Designer.cs">
-      <DependentUpon>ImportMessagesForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
+    <Compile Include="MessageFolder.cs" />
+    <Compile Include="MessageFormat.cs" />
+    <Compile Include="MobilePhone.cs" />
     <Compile Include="MotorolaTextMessage.cs" />
-    <Compile Include="NewEditMessage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NewEditMessage.Designer.cs">
-      <DependentUpon>NewEditMessage.cs</DependentUpon>
-    </Compile>
     <Compile Include="NokiaTextMessage.cs" />
     <Compile Include="Obsolete\ChooseFormat.cs">
       <SubType>Form</SubType>
@@ -149,40 +125,34 @@
     <Compile Include="Obsolete\MainBoard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MessageFolder.cs" />
-    <Compile Include="MessageFormat.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MobilePhone.cs" />
     <Compile Include="Program.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TextMessage.cs">
-      <SubType>Code</SubType>
+    <Compile Include="TextMessage.cs" />
+    <Compile Include="UI\AccessDatabaseMessages.cs" />
+    <Compile Include="UI\ContactsViewer.cs" />
+    <Compile Include="UI\ContactsViewer.Designer.cs">
+      <DependentUpon>ContactsViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="TextMessageListView.cs">
-      <SubType>Component</SubType>
+    <Compile Include="UI\ImportMessagesForm.cs" />
+    <Compile Include="UI\ImportMessagesForm.Designer.cs">
+      <DependentUpon>ImportMessagesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TextMessageListView.Designer.cs">
+    <Compile Include="UI\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\NewEditMessage.cs" />
+    <Compile Include="UI\NewEditMessage.Designer.cs">
+      <DependentUpon>NewEditMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TextMessageListView.cs" />
+    <Compile Include="UI\TextMessageListView.Designer.cs">
       <DependentUpon>TextMessageListView.cs</DependentUpon>
     </Compile>
-    <Compile Include="TextMessageListViewItem.cs" />
-    <EmbeddedResource Include="AccessDatabaseMessages.resx">
-      <DependentUpon>AccessDatabaseMessages.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ImportMessagesForm.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>ImportMessagesForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewEditMessage.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>NewEditMessage.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="UI\TextMessageListViewItem.cs" />
     <EmbeddedResource Include="Obsolete\ChooseFormat.resx">
       <DependentUpon>ChooseFormat.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -199,8 +169,19 @@
       <DependentUpon>MainBoard.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="TextMessageListView.resx">
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="UI\AccessDatabaseMessages.resx">
+      <DependentUpon>AccessDatabaseMessages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ImportMessagesForm.resx">
+      <DependentUpon>ImportMessagesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewEditMessage.resx">
+      <DependentUpon>NewEditMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TextMessageListView.resx">
       <DependentUpon>TextMessageListView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
