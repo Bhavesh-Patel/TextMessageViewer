@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageClassLibrary", "Mess
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextMessageViewer", "TextMessageViewer\TextMessageViewer.csproj", "{786E78A9-A1D1-44D6-B49B-11B16DE62D54}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageClassLibrary.Tests", "MessageClassLibrary.Tests\MessageClassLibrary.Tests.csproj", "{7E2B176B-AF6E-4605-AAB0-368BBC3F72B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{786E78A9-A1D1-44D6-B49B-11B16DE62D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{786E78A9-A1D1-44D6-B49B-11B16DE62D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{786E78A9-A1D1-44D6-B49B-11B16DE62D54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E2B176B-AF6E-4605-AAB0-368BBC3F72B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E2B176B-AF6E-4605-AAB0-368BBC3F72B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E2B176B-AF6E-4605-AAB0-368BBC3F72B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E2B176B-AF6E-4605-AAB0-368BBC3F72B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
