@@ -40,11 +40,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IMessage.cs" />
+    <Compile Include="IMessageParser.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Message.cs" />
     <Compile Include="TextMessages\MessageFormat.cs" />
     <Compile Include="TextMessages\MotorolaTextMessage.cs" />
+    <Compile Include="TextMessages\MotorolaTextMessageParser.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="TextMessages\NokiaTextMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextMessages\NokiaTextMessageParser.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="TextMessages\TextMessage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

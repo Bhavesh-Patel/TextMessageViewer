@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="MessageTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestMessages\MotorolaTextMessageParserTests.cs" />
+    <Compile Include="TestMessages\NokiaTextMessageParserTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MessageClassLibrary\MessageClassLibrary.csproj">

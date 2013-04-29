@@ -124,47 +124,11 @@ namespace MessageClassLibrary.TextMessages
 		{
 			//read in whole file removing \0 (null) and \r, and store lines in an array
 			string[] fileLines = File.ReadAllText(filePath).Replace("\0", "").Replace("\r", "").Split(new char[] { '\n' });
-			List<string> items = new List<string>(fileLines);
+			IMessage message = new NokiaTextMessageParser().Parse(fileLines);
 
-			int index = 0, maxIndex = items.Count;
-
-			//find first line starting with TEL:
-			while (index < maxIndex && !items[index].StartsWith("TEL:"))
-				index++;
-
-			//From number line
-			string fromNum = items[index].Substring(4);
-
-			//change between version 3 and 2.1: only single number stored
-			//for backward compatibility try to find 2nd number, if first was empty.
-			string toNum = String.Empty;
-			if (fromNum == "") {
-				while (index < maxIndex && !items[++index].StartsWith("TEL:")) ;
-				//index++;
-				//To number line
-				toNum = items[index].Substring(4);
-			}
-
-			//find line starting with Date:
-			while (index < maxIndex && !items[index].StartsWith("Date:"))
-				index++;
-
-			//Date line
-			DateTime dt = DateTime.Parse(items[index].Substring(5));
-			string dateTime = items[index];
-
-			//Message line
-			string message = items[++index];
-			string tmp = items[++index];
-			while (index + 1 < maxIndex && tmp != null && !tmp.StartsWith("END"))//checking for multi line messages
-			{
-				message += Environment.NewLine + tmp;
-				tmp = items[++index];
-			}
-
-			bool isSentMessage = String.IsNullOrEmpty(fromNum) && !String.IsNullOrEmpty(toNum);
+			bool isSentMessage = String.IsNullOrEmpty(message.From) && !String.IsNullOrEmpty(message.To);
 			MessageStatus textMessageStatus = isSentMessage ? MessageStatus.Sent : MessageStatus.Recieved;
-			TextMessage textMessage = new NokiaTextMessage(message, fromNum, toNum, dt, textMessageStatus, filePath);
+			TextMessage textMessage = new NokiaTextMessage(message.MessageText, message.From, message.To, message.DateTime, textMessageStatus, filePath);
 
 			return textMessage;
 		}
@@ -178,34 +142,16 @@ namespace MessageClassLibrary.TextMessages
 			//string path = lblPath.Text + "\\"+ e.Node.Text;
 			StreamReader sr = new StreamReader(filePath);
 
-			//From/To number line = 1
-			string contact = sr.ReadLine().Replace("\0", "");
-
-			//date line = 2
-			string dateTime = sr.ReadLine().Replace("\0", "");
-			DateTime dt = DateTime.Parse(dateTime.Substring(5));
-			string[] dateItems = dateTime.Substring(6).Split(new char[] { '/' });
-			try {
-				DateTime.Parse(dateTime.Substring(6));
-			} catch (FormatException) {
-				dateTime = "Date: " + dateItems[1] + "/" + dateItems[0] + "/" + dateItems[2];
-			}
-
-			sr.ReadLine();
-
-			//Message line = 4
-			string message = "";
+			List<string> fileLines = new List<string>();
 			while (sr.Peek() != -1) {
-				message += sr.ReadLine().Replace("\0", "") + Environment.NewLine;
+				fileLines.Add(sr.ReadLine().Replace("\0", ""));
 			}
-			//remove last new line character
-			message = message.Substring(0, message.Length - Environment.NewLine.Length);
-
 			sr.Close();
 
-			string textMessageNumber = contact.Substring(9);
+			IMessage message = new MotorolaTextMessageParser().Parse(fileLines);
+
 			MessageStatus textMessageStatus = MessageStatus.Recieved;//can't distingish status from data in text file
-			TextMessage textMessage = new MotorolaTextMessage(message, textMessageNumber, dt, textMessageStatus, filePath);
+			TextMessage textMessage = new MotorolaTextMessage(message.MessageText, message.From, message.DateTime, textMessageStatus, filePath);
 
 			return textMessage;
 		}
