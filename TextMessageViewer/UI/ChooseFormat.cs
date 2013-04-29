@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using Bhavesh.Utilities;
 
-namespace TextMessageViewer.Obsolete
+namespace TextMessageViewer
 {
 	/// <summary>
 	/// Summary description for ChooseFormat.

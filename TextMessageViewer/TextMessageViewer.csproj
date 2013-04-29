@@ -112,23 +112,14 @@
     <Compile Include="MobilePhone.cs" />
     <Compile Include="MotorolaTextMessage.cs" />
     <Compile Include="NokiaTextMessage.cs" />
-    <Compile Include="Obsolete\ChooseFormat.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Obsolete\FolderBoard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Obsolete\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Obsolete\MainBoard.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Program.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="TextMessage.cs" />
     <Compile Include="UI\AccessDatabaseMessages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ChooseFormat.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\ContactsViewer.cs">
@@ -162,24 +153,11 @@
       <DependentUpon>TextMessageListView.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\TextMessageListViewItem.cs" />
-    <EmbeddedResource Include="Obsolete\ChooseFormat.resx">
-      <DependentUpon>ChooseFormat.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Obsolete\FolderBoard.resx">
-      <DependentUpon>FolderBoard.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Obsolete\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Obsolete\MainBoard.resx">
-      <DependentUpon>MainBoard.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\AccessDatabaseMessages.resx">
       <DependentUpon>AccessDatabaseMessages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ChooseFormat.resx">
+      <DependentUpon>ChooseFormat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ImportMessagesForm.resx">
       <DependentUpon>ImportMessagesForm.cs</DependentUpon>

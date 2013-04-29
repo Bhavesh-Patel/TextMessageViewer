@@ -477,7 +477,7 @@ namespace TextMessageViewer
 				string phonePath = folderBrowser.SelectedPath;
 				string phoneName = Path.GetFileName(phonePath);
 				phonePath = Path.GetDirectoryName(phonePath);
-				TextMessageViewer.Obsolete.ChooseFormat formatForm = new TextMessageViewer.Obsolete.ChooseFormat();
+				TextMessageViewer.ChooseFormat formatForm = new TextMessageViewer.ChooseFormat();
 				if (formatForm.ShowDialog(this) == DialogResult.OK) {
 					AddPhoneNode(phoneName, phonePath, formatForm.Format);
 				}
