@@ -179,7 +179,7 @@
     <Content Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="MessageClassLibrary\MessageClassLibrary.csproj">
+    <ProjectReference Include="..\MessageClassLibrary\MessageClassLibrary.csproj">
       <Project>{83de2cda-aacf-4783-b838-4dcc4905cbac}</Project>
       <Name>MessageClassLibrary</Name>
     </ProjectReference>
