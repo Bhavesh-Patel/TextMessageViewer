@@ -39,27 +39,10 @@ namespace TextMessageViewer
 			message = _message;
 			format = message.Format;
 
-			string[] numbers = message.Number.Split(' ');
-			string namesAndNumbers = "";
-			foreach (string number in numbers) {//for each number
-				string nameAndNumber = number;
-
-				string contactName = Contacts.RetrieveName(number);
-				if (!String.IsNullOrEmpty(contactName)) {
-					//found contact name - add to string
-					nameAndNumber = contactName + "(" + number + ")";
-				}
-				namesAndNumbers += nameAndNumber + " ";
-
-			}
-			//trim trailing space
-			namesAndNumbers = namesAndNumbers.TrimEnd();
-			string fromNumber = "", toNumber = "";
-			if (message.Status == MessageStatus.Recieved) {
-				fromNumber = namesAndNumbers;
-			} else {
-				toNumber = namesAndNumbers;
-			}
+			string toNamesAndNumbers = NamesAndNumbers(message.To);
+			string fromNamesAndNumbers = NamesAndNumbers(message.From);
+			string fromNumber = fromNamesAndNumbers;
+			string toNumber = toNamesAndNumbers;
 
 			//TODO: use Reflector to see the internals of new ListViewItem(string[]) - in regards to SubItems and the default item
 /*
@@ -81,7 +64,7 @@ public ListViewItem(string[] items, int imageIndex) : this()
 			ListViewSubItem fromNumberItem = new ListViewSubItem(this, fromNumber);
 			fromNumberItem.Name = "FromNumber";
 			SubItems.Add(fromNumberItem);
-			ListViewSubItem messageItem = new ListViewSubItem(this, message.Message);
+			ListViewSubItem messageItem = new ListViewSubItem(this, message.MessageText);
 			messageItem.Name = "Message";
 			SubItems.Add(messageItem);
 			string dateString = message.DateTime.Date.ToShortDateString();
@@ -99,7 +82,30 @@ public ListViewItem(string[] items, int imageIndex) : this()
 			fileNameItem.Name = "FileName";
 			SubItems.Add(fileNameItem);
 			SubItems.RemoveAt(0);//remove initial default entry
-		} 
+		}
+
+		private string NamesAndNumbers(string _number)
+		{
+			string namesAndNumbers = "";
+			if (_number != null) {
+				string[] numbers = _number.Split(' ');
+				foreach (string number in numbers) {
+					//for each number
+					string nameAndNumber = number;
+
+					string contactName = Contacts.RetrieveName(number);
+					if (!String.IsNullOrEmpty(contactName)) {
+						//found contact name - add to string
+						nameAndNumber = contactName + "(" + number + ")";
+					}
+					namesAndNumbers += nameAndNumber + " ";
+				}
+				//trim trailing space
+				namesAndNumbers = namesAndNumbers.TrimEnd();
+			}
+			return namesAndNumbers;
+		}
+
 		#endregion
 	}
 }

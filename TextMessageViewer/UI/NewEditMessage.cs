@@ -55,15 +55,15 @@ namespace TextMessageViewer
 			message = _message;
 			MessageStatus status = message.Status;
 			//initialise controls with values, taking into account numbers with names in them
-			string from = status == MessageStatus.Recieved ? message.Number : "";
+			string from = message.From;
 			txtFrom.Text = from;
 			if (!String.IsNullOrEmpty(from)) {
 				string fromName = Contacts.RetrieveName(from);
 				lblFromName.Text = fromName;
 			}
 
-			txtMessage.Text = message.Message;
-			string to = status == MessageStatus.Sent ? message.Number : "";
+			txtMessage.Text = message.MessageText;
+			string to = message.To;
 			txtTo.Text = to;
 			if (!String.IsNullOrEmpty(to)) {
 				string toName = Contacts.RetrieveName(to);
@@ -103,7 +103,7 @@ namespace TextMessageViewer
 				status = MessageStatus.Sent;
 			}
 			bool isEditMode = message != null;
-			message = TextMessage.CreateMessage(format, messageText, number, date, status, filePath);
+			message = TextMessage.CreateMessage(format, messageText, from, to, date, status, filePath);
 
 			List<string> existingText = new List<string>();
 			string[] newInfo = { from, to, date.ToShortDateString(), time.ToString(), messageText };

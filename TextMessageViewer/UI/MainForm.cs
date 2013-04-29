@@ -668,7 +668,7 @@ namespace TextMessageViewer
 
 				monthMessageCount[month]++;
 
-				string number = message.Number;
+				string number = message.From;
 				if (!numberMessageCount.ContainsKey(number)) {
 					numberMessageCount[number] = 0;
 				}

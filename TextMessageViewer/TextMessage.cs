@@ -1,22 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using MessageClassLibrary;
 
 namespace TextMessageViewer
 {
 	/// <summary>Representation of a text message.</summary>
-	public abstract class TextMessage
+	public abstract class TextMessage : Message
 	{
 		#region Fields
-		/// <summary>Text of message.</summary>
-		protected string message;
-
-		/// <summary>Date and time of message.</summary>
-		protected DateTime dateTime;
-
-		/// <summary>Number of sender or reciever of message.</summary>
-		protected string number;
-
 		/// <summary>Message status.</summary>
 		protected MessageStatus sentOrRecieved;
 
@@ -25,23 +17,6 @@ namespace TextMessageViewer
 		#endregion
 
 		#region Public Properties
-		/// <summary>Gets the text of message.</summary>
-		public string Message
-		{
-			get { return message; }
-		}
-
-		/// <summary>Gets the date and time of message.</summary>
-		public DateTime DateTime
-		{
-			get { return dateTime; }
-		}
-
-		/// <summary>Gets the number of sender or reciever of message.</summary>
-		public string Number
-		{
-			get { return number; }
-		}
 
 		/// <summary>Gets the message status.</summary>
 		public MessageStatus Status
@@ -71,16 +46,15 @@ namespace TextMessageViewer
 		#region Constructors
 		/// <summary>Initializes a new instance of the <see cref="TextMessage"/> class.</summary>
 		/// <param name="_message">The message.</param>
-		/// <param name="_number">The number.</param>
+		/// <param name="fromNumber">The number.</param>
+		/// <param name="toNumber"></param>
 		/// <param name="_dateTime">The date time.</param>
 		/// <param name="_sentOrRecieved">The sent or recieved status.</param>
 		/// <param name="_filePath">Path of the file.</param>
-		public TextMessage(string _message, string _number, DateTime _dateTime, MessageStatus _sentOrRecieved, string _filePath)
+		public TextMessage(string _message, string fromNumber, string toNumber, DateTime _dateTime, MessageStatus _sentOrRecieved, string _filePath)
+			: base(_message, fromNumber, toNumber, _dateTime)
 		{
-			message = _message;
-			number = _number;
 			sentOrRecieved = _sentOrRecieved;
-			dateTime = _dateTime;
 			filePath = _filePath;
 		}
 		#endregion
@@ -90,7 +64,7 @@ namespace TextMessageViewer
 		/// <returns>A <see cref="T:System.String"></see> that represents the current <see cref="T:System.Object"></see>.</returns>
 		public override string ToString()
 		{
-			return message;
+			return MessageText;
 		}
 		#endregion
 
@@ -98,21 +72,22 @@ namespace TextMessageViewer
 		/// <summary>Creates the message of the correct format.</summary>
 		/// <param name="_format">The format.</param>
 		/// <param name="_message">The message.</param>
-		/// <param name="_number">The number.</param>
+		/// <param name="fromNumber">The from number.</param>
+		/// <param name="toNumber">The to number.</param>
 		/// <param name="_dateTime">The date and time.</param>
 		/// <param name="_sentOrRecieved">The sent or recieved status.</param>
 		/// <param name="_filePath">The file path.</param>
 		/// <returns>The newly created message.</returns>
-		public static TextMessage CreateMessage(MessageFormat _format, string _message, string _number, DateTime _dateTime, MessageStatus _sentOrRecieved, string _filePath)
+		public static TextMessage CreateMessage(MessageFormat _format, string _message, string fromNumber, string toNumber, DateTime _dateTime, MessageStatus _sentOrRecieved, string _filePath)
 		{
 			//TODO: think about adding a subclass attribute to specify which subclass to create for a given format
 			TextMessage result;
 			switch (_format) {
 				case MessageFormat.Nokia:
-					result = new NokiaTextMessage(_message, _number, _dateTime, _sentOrRecieved, _filePath);
+					result = new NokiaTextMessage(_message, fromNumber, toNumber, _dateTime, _sentOrRecieved, _filePath);
 					break;
 				case MessageFormat.Motorola:
-					result = new MotorolaTextMessage(_message, _number, _dateTime, _sentOrRecieved, _filePath);
+					result = new MotorolaTextMessage(_message, fromNumber, _dateTime, _sentOrRecieved, _filePath);
 					break;
 				default:
 					throw new NotImplementedException("Cannot create TextMessage as no subclass exists for it:" + _format.ToString());
@@ -189,9 +164,8 @@ namespace TextMessageViewer
 			}
 
 			bool isSentMessage = String.IsNullOrEmpty(fromNum) && !String.IsNullOrEmpty(toNum);
-			string textMessageNumber = isSentMessage ? toNum : fromNum;
 			MessageStatus textMessageStatus = isSentMessage ? MessageStatus.Sent : MessageStatus.Recieved;
-			TextMessage textMessage = new NokiaTextMessage(message, textMessageNumber, dt, textMessageStatus, filePath);
+			TextMessage textMessage = new NokiaTextMessage(message, fromNum, toNum, dt, textMessageStatus, filePath);
 
 			return textMessage;
 		}
@@ -289,7 +263,7 @@ namespace TextMessageViewer
 				}
 
 				//From number line = 7
-				string fromNumber = message.Status == MessageStatus.Recieved ? message.Number : "";
+				string fromNumber = message.From;
 				sw.WriteLine("TEL:" + fromNumber);//from
 				j++;
 
@@ -305,7 +279,7 @@ namespace TextMessageViewer
 					}
 				}
 				//To number line = 13
-				string toNumber = message.Status == MessageStatus.Sent ? message.Number : "";
+				string toNumber = message.To;
 				sw.WriteLine("TEL:" + toNumber);
 				j++;
 
@@ -325,7 +299,7 @@ namespace TextMessageViewer
 				j++;
 
 				//Message line = 18
-				sw.WriteLine(message.Message);
+				sw.WriteLine(message.MessageText);
 				j++;
 
 				if (inEditMode) {
@@ -358,7 +332,8 @@ namespace TextMessageViewer
 
 			try {
 				//Contact number line = 1
-				sw.WriteLine("Contact: " + message.Number);
+				string number = message.Status == MessageStatus.Recieved ? message.From : message.To;
+				sw.WriteLine("Contact: " + number);
 
 				//Date line = 2
 				sw.WriteLine("Date: " + message.DateTime.ToShortDateString() + " " + message.DateTime.ToLongTimeString());
@@ -366,7 +341,7 @@ namespace TextMessageViewer
 				sw.WriteLine();
 
 				//Message line = 4
-				sw.WriteLine(message.Message);
+				sw.WriteLine(message.MessageText);
 
 				success = true;
 			} catch (IOException) {

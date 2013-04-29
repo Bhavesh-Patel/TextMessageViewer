@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{212D87E6-2C2
 		..\lib\vCardReader.dll = ..\lib\vCardReader.dll
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageClassLibrary", "MessageClassLibrary\MessageClassLibrary.csproj", "{83DE2CDA-AACF-4783-B838-4DCC4905CBAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{786E78A9-A1D1-44D6-B49B-11B16DE62D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{786E78A9-A1D1-44D6-B49B-11B16DE62D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{786E78A9-A1D1-44D6-B49B-11B16DE62D54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83DE2CDA-AACF-4783-B838-4DCC4905CBAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83DE2CDA-AACF-4783-B838-4DCC4905CBAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83DE2CDA-AACF-4783-B838-4DCC4905CBAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83DE2CDA-AACF-4783-B838-4DCC4905CBAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

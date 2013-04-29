@@ -15,12 +15,12 @@ namespace TextMessageViewer
 
 		/// <summary>Initializes a new instance of the <see cref="MotorolaTextMessage"/> class.</summary>
 		/// <param name="_message">The message.</param>
-		/// <param name="_number">The number.</param>
+		/// <param name="fromNumber">The number.</param>
 		/// <param name="_dateTime">The date time.</param>
 		/// <param name="_sentOrRecieved">The sent or recieved status.</param>
 		/// <param name="_filePath">Path of the file.</param>
-		public MotorolaTextMessage(string _message, string _number, DateTime _dateTime, MessageStatus _sentOrRecieved, string _filePath)
-			:base(_message, _number, _dateTime, _sentOrRecieved, _filePath)
+		public MotorolaTextMessage(string _message, string fromNumber, DateTime _dateTime, MessageStatus _sentOrRecieved, string _filePath)
+			:base(_message, fromNumber, null, _dateTime, _sentOrRecieved, _filePath)
 		{
 		}
 	}
