@@ -1,0 +1,472 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bhavesh'sWindowsControlLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:Bhavesh.WindowsControlLibrary.ListViewItemTransferer">
+            <summary>Consolidates code to move items between two <see cref="T:System.Windows.Forms.ListView"/>s.</summary>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.ListViewItemTransferer.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.ListViewItemTransferer.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.ListViewItemTransferer.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.ListViewItemTransferer.leftListView">
+            <summary>The left ListView.</summary>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.ListViewItemTransferer.rightListView">
+            <summary>The right ListView.</summary>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.ListViewItemTransferer.moveItemRightValidator">
+            <summary>Validation of item being moved to the right list view.</summary>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.ListViewItemTransferer.moveItemLeftValidator">
+            <summary>Validation of item being moved to the left list view.</summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.ListViewItemTransferer.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Bhavesh.WindowsControlLibrary.ListViewItemTransferer"/> class.</summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.ListViewItemTransferer.RetrieveItems(System.Windows.Forms.ListView)">
+            <summary>Retrieves the ListViewItems within <paramref name="listView"/>.</summary>
+            <param name="listView">The list view.</param>
+            <returns>A list of ListViewItems from <paramref name="listView"/>.</returns>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.ListViewItemTransferer.RetrieveSelectedItems(System.Windows.Forms.ListView)">
+            <summary>Retrieves the selected ListViewItems within <paramref name="listView"/>.</summary>
+            <param name="listView">The list view.</param>
+            <returns>A list of selected ListViewItems from <paramref name="listView"/>.</returns>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.ListViewItemTransferer.BeginUpdate">
+            <summary>Begins the update.</summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.ListViewItemTransferer.EndUpdate">
+            <summary>Ends the update.</summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.ListViewItemTransferer.ValidateMoveRight(System.Windows.Forms.ListViewItem)">
+            <summary>Validates the item moving to the right list view.</summary>
+            <param name="item">The item.</param>
+            <returns>True, if item is allowed to move to the right.</returns>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.ListViewItemTransferer.ValidateMoveLeft(System.Windows.Forms.ListViewItem)">
+            <summary>Validates the item moving to the left list view.</summary>
+            <param name="item">The item.</param>
+            <returns>True, if item is allowed to move to the right.</returns>
+        </member>
+        <member name="P:Bhavesh.WindowsControlLibrary.ListViewItemTransferer.LeftListView">
+            <summary>Gets or sets the left ListView.</summary>
+        </member>
+        <member name="P:Bhavesh.WindowsControlLibrary.ListViewItemTransferer.RightListView">
+            <summary>Gets or sets the right ListView.</summary>
+        </member>
+        <member name="P:Bhavesh.WindowsControlLibrary.ListViewItemTransferer.MoveItemRightValidator">
+            <summary>Gets or sets the validator of item being moved to the right list view.</summary>
+        </member>
+        <member name="P:Bhavesh.WindowsControlLibrary.ListViewItemTransferer.MoveItemLeftValidator">
+            <summary>Gets or sets the validator of item being moved to the left list view.</summary>
+        </member>
+        <member name="T:Bhavesh.WindowsControlLibrary.ListViewItemTransferer.ValidateItemTransfer">
+            <summary>Provides validation when moving an ListViewItem.</summary>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.CollectionViewers.ICollectionViewer.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.ICollectionViewer.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.ICollectionViewer.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.CollectionViewers.ICollectionGenericViewer`1.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.ICollectionGenericViewer`1.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.ICollectionGenericViewer`1.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.CollectionViewers.KeyValuePairCollectionViewer`2.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.KeyValuePairCollectionViewer`2.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.KeyValuePairCollectionViewer`2.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyGridAdapter">
+            <summary>Creates a wrapper for IDictionary objetcs, so that their values can be appropriately displayed in a properties pane</summary>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyGridAdapter.dictionary">
+            <summary>The IDictionary object to display properties for.</summary>
+            <remarks>The dictionary must be of type Dictionary&lt;Object, Dictionary&lt;Object, IConvertible&gt;&gt;, where the outer
+            key is the category. ToString() will be used on both outer and inner keys for display purposes.</remarks>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyGridAdapter.#ctor(System.Collections.IDictionary)">
+            <summary>Create a new instance of this type, initialized with the supplied values.</summary>
+            <remarks>The dictionary must be of type Dictionary&lt;Object, Dictionary&lt;Object, IConvertible&gt;&gt;, where the outer
+            key is the category. ToString() will be used on both outer and inner keys for display purposes.</remarks>
+            <param name="d">The IDictionary that this adapter will represent.</param>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyGridAdapter.GetComponentName">
+            <summary>Returns the name of this instance of a component.</summary>
+            <returns>The name of the object, or null if the object does not have a name.</returns>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyGridAdapter.GetDefaultEvent">
+            <summary>Returns the default event for this instance of a component.</summary>
+            <returns>An System.ComponentModel.EventDescriptor that represents the default event
+            for this object, or null if this object does not have events.</returns>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyGridAdapter.GetClassName">
+            <summary>Returns the class name of this instance of a component.</summary>
+            <returns>The class name of the object, or null if the class does not have a name.</returns>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyGridAdapter.GetEvents(System.Attribute[])">
+            <summary>Returns the events for this instance of a component using the specified attribute array as a filter.</summary>
+            <param name="attributes">An array of type System.Attribute that is used as a filter.</param>
+            <returns>An System.ComponentModel.EventDescriptorCollection that represents the filtered events for this component instance.</returns>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyGridAdapter.GetEvents">
+            <summary>Returns the events for this instance of a component.</summary>
+            <returns>An System.ComponentModel.EventDescriptorCollection that represents the events for this component instance.</returns>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyGridAdapter.GetConverter">
+            <summary>Returns a type converter for this instance of a component.</summary>
+            <returns>A System.ComponentModel.TypeConverter that is the converter for this object,
+            or null if there is no System.ComponentModel.TypeConverter for this object.</returns>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyGridAdapter.GetPropertyOwner(System.ComponentModel.PropertyDescriptor)">
+            <summary>Returns an object that contains the property described by the specified property descriptor.</summary>
+            <param name="pd">A System.ComponentModel.PropertyDescriptor that represents the property whose owner is to be found.</param>
+            <returns>An System.Object that represents the owner of the specified property.</returns>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyGridAdapter.GetAttributes">
+            <summary>Returns a collection of custom attributes for this instance of a component.</summary>
+            <returns>An System.ComponentModel.AttributeCollection containing the attributes for this object.</returns>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyGridAdapter.GetEditor(System.Type)">
+            <summary>Returns an editor of the specified type for this instance of a component.</summary>
+            <param name="editorBaseType">A System.Type that represents the editor for this object.</param>
+            <returns>An System.Object of the specified type that is the editor for this object, or null if the editor cannot be found.</returns>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyGridAdapter.GetDefaultProperty">
+            <summary>Returns the default property for this instance of a component.</summary>
+            <returns>A System.ComponentModel.PropertyDescriptor that represents the default property
+                for this object, or null if this object does not have properties.</returns>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyGridAdapter.GetProperties">
+            <summary>Returns the properties for this instance of a component.</summary>
+            <returns>A System.ComponentModel.PropertyDescriptorCollection that represents the properties for this component instance.</returns>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyGridAdapter.GetProperties(System.Attribute[])">
+            <summary>Returns the properties for this instance of a component using the attribute array as a filter.</summary>
+            <param name="attributes">An array of type System.Attribute that is used as a filter.</param>
+            <returns> A System.ComponentModel.PropertyDescriptorCollection that represents the filtered properties for this component instance.</returns>
+        </member>
+        <member name="P:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyGridAdapter.Dictionary">
+            <summary>Dictionary from which the values come</summary>
+            <remarks>The dictionary must be of type Dictionary&lt;Object, Dictionary&lt;Object, IConvertible&gt;&gt;, where the outer
+            key is the category. ToString() will be used on both outer and inner keys for display purposes.</remarks>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.Selector.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.Selector.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.Selector.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.FileSelector.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.FileSelector.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.FileSelector.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Bhavesh.WindowsControlLibrary.ListViewItemReOrderer">
+            <summary>Consolidates code to reorder items within a <see cref="P:Bhavesh.WindowsControlLibrary.ListViewItemReOrderer.ListView"/>.</summary>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.ListViewItemReOrderer.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.ListViewItemReOrderer.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.ListViewItemReOrderer.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.ListViewItemReOrderer.listView">
+            <summary>The ListView.</summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.ListViewItemReOrderer.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Bhavesh.WindowsControlLibrary.ListViewItemReOrderer"/> class.</summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.ListViewItemReOrderer.RetrieveSelectedItems">
+            <summary>Retrieves the selected ListViewItems within listView.</summary>
+            <returns>A list of selected ListViewItems from listView.</returns>
+        </member>
+        <member name="P:Bhavesh.WindowsControlLibrary.ListViewItemReOrderer.ListView">
+            <summary>Gets or sets the list view.</summary>
+        </member>
+        <member name="T:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyDescriptor">
+            <summary>Used to correctly display key-value pair, such as DictionaryEntry, in a properties pane</summary>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyDescriptor._dictionary">
+            <summary>Dictionary from which the value comes</summary>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyDescriptor._key">
+            <summary>Key which maps to the value</summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyDescriptor.SetValue(System.Object,System.Object)">
+            <summary>Sets the value of the component to a different value.</summary>
+            <param name="component">The component with the property value that is to be set.</param>
+            <param name="value">The new value.</param>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyDescriptor.GetValue(System.Object)">
+            <summary>Gets the current value of the property on a component.</summary>
+            <param name="component">The component with the property for which to retrieve the value.</param>
+            <returns>The value of a property for a given component</returns>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyDescriptor.CanResetValue(System.Object)">
+            <summary>Returns whether resetting an object changes its value.</summary>
+            <param name="component">The component to test for reset capability.</param>
+            <returns>True if resetting the component changes its value; otherwise, false.</returns>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyDescriptor.ResetValue(System.Object)">
+            <summary>Resets the value for this property of the component to the default value.</summary>
+            <param name="component">The component with the property value that is to be reset to the default value.</param>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyDescriptor.ShouldSerializeValue(System.Object)">
+            <summary>Determines a value indicating whether the value of this property needs to be persisted.</summary>
+            <param name="component">The component with the property to be examined for persistence.</param>
+            <returns>True if the property should be persisted; otherwise, false.</returns>
+        </member>
+        <member name="P:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyDescriptor.PropertyType">
+            <summary>Gets the type of the property.</summary>
+            <returns>A System.Type that represents the type of the property.</returns>
+        </member>
+        <member name="P:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyDescriptor.IsReadOnly">
+            <summary>Gets a value indicating whether this property is read-only.</summary>
+            <returns>True if the property is read-only; otherwise, false.</returns>
+        </member>
+        <member name="P:Bhavesh.WindowsControlLibrary.CollectionViewers.DictionaryPropertyDescriptor.ComponentType">
+            <summary>Gets the type of the component this property is bound to.</summary>
+            <returns>A System.Type that represents the type of component this property is bound
+                to. When the System.ComponentModel.PropertyDescriptor.GetValue(System.Object)
+                or System.ComponentModel.PropertyDescriptor.SetValue(System.Object,System.Object)
+                methods are invoked, the object specified might be an instance of this type.</returns>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.FolderSelector.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.FolderSelector.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.FolderSelector.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.CollectionViewers.IDictionaryViewer`2.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.IDictionaryViewer`2.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.IDictionaryViewer`2.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.InputForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.InputForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.InputForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Bhavesh.WindowsControlLibrary.LocalizableStringCollectionComponent">
+            <summary>When placed on a control (or form) allows definition of localisable string values.</summary>
+            <remarks>This class is a collection whose item values are written to a control (or form) 
+            resource file, which can later be localised.</remarks>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.LocalizableStringCollectionComponent.localisedStrings">
+            <summary>The collection of localised stings. </summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.LocalizableStringCollectionComponent.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Bhavesh.WindowsControlLibrary.LocalizableStringComponent"/> class.</summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.LocalizableStringCollectionComponent.#ctor(System.ComponentModel.IContainer)">
+            <summary>Initializes a new instance of the <see cref="T:Bhavesh.WindowsControlLibrary.LocalizableStringComponent"/> class.</summary>
+            <param name="container">The container.</param>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.LocalizableStringCollectionComponent.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.LocalizableStringCollectionComponent.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.LocalizableStringCollectionComponent.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Bhavesh.WindowsControlLibrary.LocalizableStringCollectionComponent.LocalisedStings">
+            <summary>Gets or sets the collection of localised stings.</summary>
+        </member>
+        <member name="T:Bhavesh.WindowsControlLibrary.LocalizableStringComponent">
+            <summary>A component representing a (localizable) string.</summary>
+            <remarks>This class serves only to write to a control (or form) resource file, 
+            which can later be localised.</remarks>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.LocalizableStringComponent.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.LocalizableStringComponent.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.LocalizableStringComponent.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.LocalizableStringComponent.name">
+            <summary>Name of the instance</summary>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.LocalizableStringComponent.localisedString">
+            <summary>The value of the localised string.</summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.LocalizableStringComponent.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Bhavesh.WindowsControlLibrary.LocalizableStringComponent"/> class.</summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.LocalizableStringComponent.#ctor(System.ComponentModel.IContainer)">
+            <summary>Initializes a new instance of the <see cref="T:Bhavesh.WindowsControlLibrary.LocalizableStringComponent"/> class.</summary>
+            <param name="container">The container.</param>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.LocalizableStringComponent.op_Implicit(Bhavesh.WindowsControlLibrary.LocalizableStringComponent)~System.String">
+            <summary>Performs an implicit conversion from <see cref="T:Bhavesh.WindowsControlLibrary.LocalizableStringComponent"/> to <see cref="T:System.String"/>.</summary>
+            <param name="instance">The instance.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="P:Bhavesh.WindowsControlLibrary.LocalizableStringComponent.Text">
+            <summary>Gets or sets the localisable text.</summary>
+        </member>
+        <member name="P:Bhavesh.WindowsControlLibrary.LocalizableStringComponent.Name">
+            <summary>Gets or sets the name.</summary>
+        </member>
+        <member name="F:Bhavesh.WindowsControlLibrary.CollectionViewers.HashtableViewer.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.HashtableViewer.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bhavesh.WindowsControlLibrary.CollectionViewers.HashtableViewer.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>
