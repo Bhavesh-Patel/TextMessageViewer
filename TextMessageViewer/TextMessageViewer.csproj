@@ -75,13 +75,12 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="&quot;Bhavesh%27sWindowsControlLibrary&quot;, Version=1.0.2989.23588, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Bhavesh's Utilities\Bhavesh'sWindowsControlLibrary\bin\Debug\Bhavesh'sWindowsControlLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="Bhavesh%27s Utilities">
       <Name>Bhavesh%27s Utilities</Name>
-      <HintPath>bin\Debug\Bhavesh's Utilities.dll</HintPath>
+      <HintPath>..\lib\Bhavesh's Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Bhavesh%27sWindowsControlLibrary">
+      <HintPath>..\lib\Bhavesh'sWindowsControlLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -100,7 +99,7 @@
     </Reference>
     <Reference Include="vCardReader, Version=1.0.3004.40440, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\vCardReader\vCardReader\bin\Debug\vCardReader.dll</HintPath>
+      <HintPath>..\lib\vCardReader.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -129,12 +128,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="TextMessage.cs" />
-    <Compile Include="UI\AccessDatabaseMessages.cs" />
-    <Compile Include="UI\ContactsViewer.cs" />
+    <Compile Include="UI\AccessDatabaseMessages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ContactsViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\ContactsViewer.Designer.cs">
       <DependentUpon>ContactsViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ImportMessagesForm.cs" />
+    <Compile Include="UI\ImportMessagesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\ImportMessagesForm.Designer.cs">
       <DependentUpon>ImportMessagesForm.cs</DependentUpon>
     </Compile>
@@ -144,11 +149,15 @@
     <Compile Include="UI\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\NewEditMessage.cs" />
+    <Compile Include="UI\NewEditMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\NewEditMessage.Designer.cs">
       <DependentUpon>NewEditMessage.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\TextMessageListView.cs" />
+    <Compile Include="UI\TextMessageListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UI\TextMessageListView.Designer.cs">
       <DependentUpon>TextMessageListView.cs</DependentUpon>
     </Compile>

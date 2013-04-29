@@ -2,6 +2,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextMessageViewer", "TextMessageViewer.csproj", "{786E78A9-A1D1-44D6-B49B-11B16DE62D54}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{212D87E6-2C27-4D21-82DD-A6E1F698A8C0}"
+	ProjectSection(SolutionItems) = preProject
+		..\lib\Bhavesh's Utilities.dll = ..\lib\Bhavesh's Utilities.dll
+		..\lib\Bhavesh'sWindowsControlLibrary.dll = ..\lib\Bhavesh'sWindowsControlLibrary.dll
+		..\lib\vCardReader.dll = ..\lib\vCardReader.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
