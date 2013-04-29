@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Windows.Forms;
 using Bhavesh.Utilities;
+using MessageClassLibrary.TextMessages;
 
 namespace TextMessageViewer
 {

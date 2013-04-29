@@ -6,6 +6,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 using Bhavesh.Utilities;
+using MessageClassLibrary.TextMessages;
 
 namespace TextMessageViewer
 {

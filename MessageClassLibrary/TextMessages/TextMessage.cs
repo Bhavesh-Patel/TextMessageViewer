@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using MessageClassLibrary;
 
-namespace TextMessageViewer
+namespace MessageClassLibrary.TextMessages
 {
 	/// <summary>Representation of a text message.</summary>
 	public abstract class TextMessage : Message

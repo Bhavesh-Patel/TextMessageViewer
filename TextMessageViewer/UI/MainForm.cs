@@ -11,6 +11,7 @@ using Bhavesh.Utilities;
 using Bhavesh.WindowsControlLibrary;
 using System.Collections.Generic;
 using Bhavesh.WindowsControlLibrary.CollectionViewers;
+using MessageClassLibrary.TextMessages;
 
 namespace TextMessageViewer
 {

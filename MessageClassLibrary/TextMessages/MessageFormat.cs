@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace TextMessageViewer
+namespace MessageClassLibrary.TextMessages
 {
 	/// <summary>Enumeration of different formats.</summary>
 	public enum MessageFormat

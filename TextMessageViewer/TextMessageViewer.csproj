@@ -111,14 +111,10 @@
     </Compile>
     <Compile Include="Contacts.cs" />
     <Compile Include="MessageFolder.cs" />
-    <Compile Include="MessageFormat.cs" />
     <Compile Include="MobilePhone.cs" />
-    <Compile Include="MotorolaTextMessage.cs" />
-    <Compile Include="NokiaTextMessage.cs" />
     <Compile Include="Program.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TextMessage.cs" />
     <Compile Include="UI\AccessDatabaseMessages.cs">
       <SubType>Form</SubType>
     </Compile>

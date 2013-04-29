@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace TextMessageViewer
+namespace MessageClassLibrary.TextMessages
 {
 	/// <summary>Representation of a Motorola text message.</summary>
 	class MotorolaTextMessage : TextMessage
