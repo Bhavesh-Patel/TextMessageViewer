@@ -5,7 +5,7 @@ using System.IO;
 namespace MessageClassLibrary.TextMessages
 {
 	/// <summary>Representation of a text message.</summary>
-	public abstract class TextMessage : Message
+	public class TextMessage : Message
 	{
 		#region Fields
 		/// <summary>Message status.</summary>
@@ -36,10 +36,7 @@ namespace MessageClassLibrary.TextMessages
 		}
 
 		/// <summary>Gets the format of this message.</summary>
-		public abstract MessageFormat Format
-		{
-			get;
-		}
+		public MessageFormat Format { get; private set; }
 		#endregion
 
 		#region Constructors
@@ -50,9 +47,10 @@ namespace MessageClassLibrary.TextMessages
 		/// <param name="_dateTime">The date time.</param>
 		/// <param name="_sentOrRecieved">The sent or recieved status.</param>
 		/// <param name="_filePath">Path of the file.</param>
-		public TextMessage(string _message, string fromNumber, string toNumber, DateTime _dateTime, MessageStatus _sentOrRecieved, string _filePath)
+		public TextMessage(MessageFormat format, string _message, string fromNumber, string toNumber, DateTime _dateTime, MessageStatus _sentOrRecieved, string _filePath)
 			: base(_message, fromNumber, toNumber, _dateTime)
 		{
+			Format = format;
 			sentOrRecieved = _sentOrRecieved;
 			filePath = _filePath;
 		}
@@ -79,18 +77,7 @@ namespace MessageClassLibrary.TextMessages
 		/// <returns>The newly created message.</returns>
 		public static TextMessage CreateMessage(MessageFormat _format, string _message, string fromNumber, string toNumber, DateTime _dateTime, MessageStatus _sentOrRecieved, string _filePath)
 		{
-			//TODO: think about adding a subclass attribute to specify which subclass to create for a given format
-			TextMessage result;
-			switch (_format) {
-				case MessageFormat.Nokia:
-					result = new NokiaTextMessage(_message, fromNumber, toNumber, _dateTime, _sentOrRecieved, _filePath);
-					break;
-				case MessageFormat.Motorola:
-					result = new MotorolaTextMessage(_message, fromNumber, _dateTime, _sentOrRecieved, _filePath);
-					break;
-				default:
-					throw new NotImplementedException("Cannot create TextMessage as no subclass exists for it:" + _format.ToString());
-			}
+			TextMessage result = new TextMessage(_format, _message, fromNumber, toNumber, _dateTime, _sentOrRecieved, _filePath);
 
 			return result;
 		}
@@ -102,58 +89,53 @@ namespace MessageClassLibrary.TextMessages
 		public static TextMessage ReadTextMessage(string filePath, MessageFormat format)
 		{
 			TextMessage result;
+			TextMessageReader textMessageReader= new TextMessageReader();
 			switch (format) {
 				case MessageFormat.Nokia: {
-						result = ReadNokiaTextMessage(filePath);
-						break;
-					}
+					textMessageReader.MessageParser = new NokiaTextMessageParser();
+					break;
+				}
 				case MessageFormat.Motorola: {
-						result = ReadMotorolaTextMessage(filePath);
-						break;
-					}
+					textMessageReader.MessageParser = new MotorolaTextMessageParser();
+					break;
+				}
 				default:
-					throw new NotImplementedException("Unable to read " + format.ToString() + "...yet!");
+					throw new NotImplementedException("No parser defined for " + format.ToString() + "...yet!");
 			}
+
+			IMessage readTextMessage = textMessageReader.ReadTextMessage(filePath);
+			result = CreateTextMessage(format, readTextMessage, filePath);
+
 			return result;
 		}
 
-		/// <summary>Creates a <see cref="TextMessage"/> from a file containing data, in Nokia format.</summary>
+		/// <summary>Creates a <see cref="TextMessage"/> from a file containing data.</summary>
+		/// <param name="format">The message format.</param>
+		/// <param name="message">The message to wrap up.</param>
 		/// <param name="filePath">The file path.</param>
 		/// <returns>A TextMessage containing all relevant information from the file.</returns>
-		private static TextMessage ReadNokiaTextMessage(string filePath)
+		private static TextMessage CreateTextMessage(MessageFormat format, IMessage message, string filePath)
 		{
-			//read in whole file removing \0 (null) and \r, and store lines in an array
-			string[] fileLines = File.ReadAllText(filePath).Replace("\0", "").Replace("\r", "").Split(new char[] { '\n' });
-			IMessage message = new NokiaTextMessageParser().Parse(fileLines);
-
-			bool isSentMessage = String.IsNullOrEmpty(message.From) && !String.IsNullOrEmpty(message.To);
-			MessageStatus textMessageStatus = isSentMessage ? MessageStatus.Sent : MessageStatus.Recieved;
-			TextMessage textMessage = new NokiaTextMessage(message.MessageText, message.From, message.To, message.DateTime, textMessageStatus, filePath);
-
-			return textMessage;
-		}
-
-		/// <summary>Creates a <see cref="TextMessage"/> from a file containing data, in Motorola format.</summary>
-		/// <remarks>The text file doesn't contain infomation to indicate whether it was sent or recieved.</remarks>
-		/// <param name="filePath">The file path.</param>
-		/// <returns>A TextMessage containing all relevant information from the file.</returns>
-		private static TextMessage ReadMotorolaTextMessage(string filePath)
-		{
-			//string path = lblPath.Text + "\\"+ e.Node.Text;
-			StreamReader sr = new StreamReader(filePath);
-
-			List<string> fileLines = new List<string>();
-			while (sr.Peek() != -1) {
-				fileLines.Add(sr.ReadLine().Replace("\0", ""));
+			MessageStatus textMessageStatus;
+			switch (format) {
+				case MessageFormat.Nokia: {
+					bool isSentMessage = String.IsNullOrEmpty(message.From) && !String.IsNullOrEmpty(message.To);
+					textMessageStatus = isSentMessage ? MessageStatus.Sent : MessageStatus.Recieved;
+					break;
+				}
+				case MessageFormat.Motorola: {
+					textMessageStatus = MessageStatus.Recieved; //can't distingish status from data in text file
+					break;
+				}
+				default:
+					throw new NotImplementedException("Unable to read " + format.ToString() + "...yet!");
 			}
-			sr.Close();
 
-			IMessage message = new MotorolaTextMessageParser().Parse(fileLines);
+			TextMessage result = new TextMessage(format, message.MessageText, message.From, message.To, message.DateTime,
+				textMessageStatus,
+				filePath);
 
-			MessageStatus textMessageStatus = MessageStatus.Recieved;//can't distingish status from data in text file
-			TextMessage textMessage = new MotorolaTextMessage(message.MessageText, message.From, message.DateTime, textMessageStatus, filePath);
-
-			return textMessage;
+			return result;
 		}
 
 		/// <summary>Writes the text message to a file.</summary>

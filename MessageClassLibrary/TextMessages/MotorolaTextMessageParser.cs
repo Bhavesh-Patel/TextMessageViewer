@@ -15,7 +15,7 @@ namespace MessageClassLibrary.TextMessages
 		//	string message = strings[3];
 		//	IMessage result = new Message(message, contact, null, dateTime);
 
-			List<string> fileLines = new List<string>(lines);
+			List<string> fileLines = new List<string>(lines.Select(s => s.Replace("\0", "")));
 			//From/To number line = 1
 			string contact = fileLines[0];
 

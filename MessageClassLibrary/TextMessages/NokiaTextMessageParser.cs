@@ -8,7 +8,8 @@ namespace MessageClassLibrary.TextMessages
 	{
 		public IMessage Parse(IEnumerable<string> lines)
 		{
-			List<string> items = new List<string>(lines);
+			//removing \0 (null) and \r
+			List<string> items = new List<string>(lines.Select(s => s.Replace("\0", "").Replace("\r", "")));
 
 			int index = 0, maxIndex = items.Count;
 
