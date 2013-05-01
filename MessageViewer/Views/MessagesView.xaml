@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:viewModels="clr-namespace:TextMessageViewerWPF.ViewModels"
-             xmlns:views="clr-namespace:TextMessageViewerWPF.Views"
-             x:Class="TextMessageViewerWPF.Views.TextMessagesView"
+             xmlns:viewModels="clr-namespace:MessageViewer.ViewModels"
+             xmlns:views="clr-namespace:MessageViewer.Views"
+             x:Class="MessageViewer.Views.MessagesView"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
@@ -16,7 +16,7 @@
         </DataTemplate>
     </UserControl.Resources>
     <UserControl.DataContext>
-        <viewModels:TextMessagesViewModel/>
+        <viewModels:MessagesViewModel/>
     </UserControl.DataContext>
     <Grid>
     	<Grid.RowDefinitions>
@@ -24,18 +24,18 @@
     		<RowDefinition Height="Auto"/>
     	</Grid.RowDefinitions>
 
-        <ListView Margin="5" ItemsSource="{Binding TextMessages}" IsSynchronizedWithCurrentItem="True" SelectedItem="{Binding Path=CurrentTextMessage, Mode=TwoWay}" >
+        <ListView Margin="5" ItemsSource="{Binding TextMessages}" IsSynchronizedWithCurrentItem="True" SelectedItem="{Binding Path=CurrentMessage, Mode=TwoWay}" >
             
             <ListView.View>
         		<GridView>
-                    <GridViewColumn Header="From" DisplayMemberBinding="{Binding Path=TextMessage.From}"/>
-                    <GridViewColumn Header="Message" DisplayMemberBinding="{Binding Path=TextMessage.MessageText}"/>
-                    <GridViewColumn Header="To" DisplayMemberBinding="{Binding Path=TextMessage.To}"/>
-                    <GridViewColumn Header="Date and Time" DisplayMemberBinding="{Binding Path=TextMessage.DateTime}"/>
+                    <GridViewColumn Header="From" DisplayMemberBinding="{Binding Path=Message.From}"/>
+                    <GridViewColumn Header="Message" DisplayMemberBinding="{Binding Path=Message.MessageText}"/>
+                    <GridViewColumn Header="To" DisplayMemberBinding="{Binding Path=Message.To}"/>
+                    <GridViewColumn Header="Date and Time" DisplayMemberBinding="{Binding Path=Message.DateTime}"/>
         		</GridView>
         	</ListView.View>
         </ListView>
-        <views:TextMessageView Margin="5" Grid.Row="1" DataContext="{Binding Path=CurrentTextMessage}"/>
+        <views:MessageView Margin="5" Grid.Row="1" DataContext="{Binding Path=CurrentMessage}"/>
 
     </Grid>
 </UserControl>

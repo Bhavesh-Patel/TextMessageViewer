@@ -4,22 +4,22 @@ using System.Linq;
 using MessageClassLibrary;
 using MessageClassLibrary.TextMessages;
 
-namespace TextMessageViewerWPF.ViewModels
+namespace MessageViewer.ViewModels
 {
-	public class TextMessagesViewModel
+	public class MessagesViewModel
 	{
-		public ObservableCollection<TextMessageViewModel> TextMessages { get; set; }
+		public ObservableCollection<MessageViewModel> TextMessages { get; set; }
 
-		public TextMessageViewModel CurrentTextMessage { get; set; }
+		public MessageViewModel CurrentMessage { get; set; }
 
-		public TextMessagesViewModel()
+		public MessagesViewModel()
 		{
 			const string path = @"..\..\..\Messages\V3i\Inbox";
 			TextMessageReader textMessageReader = new TextMessageReader { MessageParser = new MotorolaTextMessageParser() };
 			IEnumerable<IMessage> readTextMessages = textMessageReader.ReadTextMessages(path);
-			IEnumerable<TextMessageViewModel> textMessageViewModels =
-				readTextMessages.OrderBy(t => t.DateTime).Select(t => new TextMessageViewModel(t));
-			TextMessages = new ObservableCollection<TextMessageViewModel>(textMessageViewModels);
+			IEnumerable<MessageViewModel> textMessageViewModels =
+				readTextMessages.OrderBy(t => t.DateTime).Select(t => new MessageViewModel(t));
+			TextMessages = new ObservableCollection<MessageViewModel>(textMessageViewModels);
 		}
 	}
 }

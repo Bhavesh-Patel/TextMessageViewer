@@ -1,13 +1,13 @@
 ﻿using System.Windows.Controls;
 
-namespace TextMessageViewerWPF.Views
+namespace MessageViewer.Views
 {
 	/// <summary>
 	/// Interaction logic for TextMessageView.xaml
 	/// </summary>
-	public partial class TextMessageView : UserControl
+	public partial class MessageView : UserControl
 	{
-		public TextMessageView()
+		public MessageView()
 		{
 			this.InitializeComponent();
 		}

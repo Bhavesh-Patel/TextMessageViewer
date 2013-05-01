@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace TextMessageViewerWPF
+namespace MessageViewer
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml

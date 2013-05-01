@@ -3,13 +3,13 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:viewModels="clr-namespace:TextMessageViewerWPF.ViewModels"
+	xmlns:viewModels="clr-namespace:MessageViewer.ViewModels"
 	mc:Ignorable="d"
-	x:Class="TextMessageViewerWPF.Views.TextMessageView"
+	x:Class="MessageViewer.Views.MessageView"
 	x:Name="UserControl"
 	d:DesignWidth="360" d:DesignHeight="210">
 	<UserControl.DataContext>
-		<viewModels:TextMessageViewModel/>
+		<viewModels:MessageViewModel/>
 	</UserControl.DataContext>
 
 	<Grid x:Name="LayoutRoot">
@@ -27,9 +27,9 @@
 		<TextBlock Margin="5" Grid.Row="1" TextWrapping="Wrap"><Run Language="en-gb" Text="To"/></TextBlock>
 		<TextBlock Margin="5" Grid.Row="2" TextWrapping="Wrap"><Run Language="en-gb" Text="Date &amp; Time"/></TextBlock>
 		<TextBlock Margin="5,5,5,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment, Width"><Run Language="en-gb" Text="Message"/></TextBlock>
-		<TextBlock Grid.Column="1" Margin="5" TextWrapping="Wrap" Text="{Binding TextMessage.From, Mode=OneWay}"/>
-		<TextBlock Grid.Column="1" Margin="5" Grid.Row="1" TextWrapping="Wrap" Text="{Binding TextMessage.To, Mode=OneWay}"/>
-		<TextBlock Grid.Column="1" Margin="5" Grid.Row="2" TextWrapping="Wrap" Text="{Binding TextMessage.DateTime, Mode=OneWay}"/>
-		<TextBlock Grid.Column="1" Margin="5" Grid.Row="3" TextWrapping="Wrap" Text="{Binding TextMessage.MessageText, Mode=OneWay}"/>
+		<TextBlock Grid.Column="1" Margin="5" TextWrapping="Wrap" Text="{Binding Message.From, Mode=OneWay}"/>
+		<TextBlock Grid.Column="1" Margin="5" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Message.To, Mode=OneWay}"/>
+		<TextBlock Grid.Column="1" Margin="5" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Message.DateTime, Mode=OneWay}"/>
+		<TextBlock Grid.Column="1" Margin="5" Grid.Row="3" TextWrapping="Wrap" Text="{Binding Message.MessageText, Mode=OneWay}"/>
 	</Grid>
 </UserControl>

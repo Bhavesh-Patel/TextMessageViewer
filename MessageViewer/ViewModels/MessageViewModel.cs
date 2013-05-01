@@ -1,28 +1,20 @@
 ﻿using System;
 using MessageClassLibrary;
 
-namespace TextMessageViewerWPF.ViewModels
+namespace MessageViewer.ViewModels
 {
-	public class TextMessageViewModel
+	public class MessageViewModel
 	{
-		private IMessage textMessage;
-		
-		public TextMessageViewModel()
+		public MessageViewModel()
 		{
-			TextMessage = new Message("My Message", "FROM me", "To You", new DateTime(2013, 3, 11, 10, 00, 00));
+			Message = new Message("My Message", "FROM me", "To You", new DateTime(2013, 3, 11, 10, 00, 00));
 		}
 
-		public TextMessageViewModel(IMessage textMessage)
+		public MessageViewModel(IMessage textMessage)
 		{
-			TextMessage = textMessage;
+			Message = textMessage;
 		}
 
-		public IMessage TextMessage
-		{
-			get { return textMessage; }
-			private set { textMessage = value; }
-		}
-		
-		
+		public IMessage Message { get; private set; }
 	}
 }

@@ -8,8 +8,8 @@
     <ProjectGuid>{1C9F0662-BAAC-4881-862D-489CCAA0CF30}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TextMessageViewerWPF</RootNamespace>
-    <AssemblyName>TextMessageViewerWPF</AssemblyName>
+    <RootNamespace>MessageViewer</RootNamespace>
+    <AssemblyName>MessageViewer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
