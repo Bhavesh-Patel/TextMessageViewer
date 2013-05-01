@@ -3,7 +3,7 @@
 namespace MessageViewer.Views
 {
 	/// <summary>
-	/// Interaction logic for TextMessageView.xaml
+	/// Interaction logic for MessageView.xaml
 	/// </summary>
 	public partial class MessageView : UserControl
 	{

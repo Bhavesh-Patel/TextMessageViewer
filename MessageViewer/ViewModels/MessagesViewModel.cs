@@ -8,7 +8,7 @@ namespace MessageViewer.ViewModels
 {
 	public class MessagesViewModel
 	{
-		public ObservableCollection<MessageViewModel> TextMessages { get; set; }
+		public ObservableCollection<MessageViewModel> Messages { get; set; }
 
 		public MessageViewModel CurrentMessage { get; set; }
 
@@ -16,10 +16,10 @@ namespace MessageViewer.ViewModels
 		{
 			const string path = @"..\..\..\Messages\V3i\Inbox";
 			TextMessageReader textMessageReader = new TextMessageReader { MessageParser = new MotorolaTextMessageParser() };
-			IEnumerable<IMessage> readTextMessages = textMessageReader.ReadTextMessages(path);
-			IEnumerable<MessageViewModel> textMessageViewModels =
-				readTextMessages.OrderBy(t => t.DateTime).Select(t => new MessageViewModel(t));
-			TextMessages = new ObservableCollection<MessageViewModel>(textMessageViewModels);
+			IEnumerable<IMessage> messages = textMessageReader.ReadTextMessages(path);
+			IEnumerable<MessageViewModel> messageViewModels =
+				messages.OrderBy(t => t.DateTime).Select(t => new MessageViewModel(t));
+			Messages = new ObservableCollection<MessageViewModel>(messageViewModels);
 		}
 	}
 }

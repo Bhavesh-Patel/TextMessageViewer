@@ -24,7 +24,7 @@
     		<RowDefinition Height="Auto"/>
     	</Grid.RowDefinitions>
 
-        <ListView Margin="5" ItemsSource="{Binding TextMessages}" IsSynchronizedWithCurrentItem="True" SelectedItem="{Binding Path=CurrentMessage, Mode=TwoWay}" >
+        <ListView Margin="5" ItemsSource="{Binding Messages}" IsSynchronizedWithCurrentItem="True" SelectedItem="{Binding Path=CurrentMessage, Mode=TwoWay}" >
             
             <ListView.View>
         		<GridView>
