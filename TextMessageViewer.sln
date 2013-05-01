@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextMessageViewer", "TextMe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageClassLibrary.Tests", "MessageClassLibrary.Tests\MessageClassLibrary.Tests.csproj", "{7E2B176B-AF6E-4605-AAB0-368BBC3F72B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextMessageViewerWPF", "TextMessageViewerUI\TextMessageViewerWPF.csproj", "{1C9F0662-BAAC-4881-862D-489CCAA0CF30}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageViewer", "MessageViewer\MessageViewer.csproj", "{1C9F0662-BAAC-4881-862D-489CCAA0CF30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
