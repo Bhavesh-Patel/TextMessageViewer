@@ -1,0 +1,35 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:viewModels="clr-namespace:TextMessageViewerWPF.ViewModels"
+	mc:Ignorable="d"
+	x:Class="TextMessageViewerWPF.Views.TextMessageView"
+	x:Name="UserControl"
+	d:DesignWidth="360" d:DesignHeight="210">
+	<UserControl.DataContext>
+		<viewModels:TextMessageViewModel/>
+	</UserControl.DataContext>
+
+	<Grid x:Name="LayoutRoot">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto"/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<TextBlock Margin="5" TextWrapping="Wrap"><Run Language="en-gb" Text="From"/></TextBlock>
+		<TextBlock Margin="5" Grid.Row="1" TextWrapping="Wrap"><Run Language="en-gb" Text="To"/></TextBlock>
+		<TextBlock Margin="5" Grid.Row="2" TextWrapping="Wrap"><Run Language="en-gb" Text="Date &amp; Time"/></TextBlock>
+		<TextBlock Margin="5,5,5,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment, Width"><Run Language="en-gb" Text="Message"/></TextBlock>
+		<TextBlock Grid.Column="1" Margin="5" TextWrapping="Wrap" Text="{Binding TextMessage.From, Mode=OneWay}"/>
+		<TextBlock Grid.Column="1" Margin="5" Grid.Row="1" TextWrapping="Wrap" Text="{Binding TextMessage.To, Mode=OneWay}"/>
+		<TextBlock Grid.Column="1" Margin="5" Grid.Row="2" TextWrapping="Wrap" Text="{Binding TextMessage.DateTime, Mode=OneWay}"/>
+		<TextBlock Grid.Column="1" Margin="5" Grid.Row="3" TextWrapping="Wrap" Text="{Binding TextMessage.MessageText, Mode=OneWay}"/>
+	</Grid>
+</UserControl>
