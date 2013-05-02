@@ -23,11 +23,13 @@ namespace MessageClassLibrary.TextMessages
 			string dateTime = fileLines[1];
 			DateTime dt = DateTime.Parse(dateTime.Substring(5));
 			string[] dateItems = dateTime.Substring(6).Split(new char[] { '/' });
-			try {
-				DateTime.Parse(dateTime.Substring(6));
-			} catch (FormatException) {
-				dateTime = "Date: " + dateItems[1] + "/" + dateItems[0] + "/" + dateItems[2];
-			}
+
+			// why was the following being done?
+			//try {
+			//DateTime.Parse(dateTime.Substring(6));
+			//} catch (FormatException) {
+			//	dateTime = "Date: " + dateItems[1] + "/" + dateItems[0] + "/" + dateItems[2];
+			//}
 
 			//Message line = 4
 			string message = "";
@@ -45,7 +47,7 @@ namespace MessageClassLibrary.TextMessages
 
 		public IMessage Parse(string line)
 		{
-			string[] strings = line.Split(new[] { '\r', '\n', }, StringSplitOptions.RemoveEmptyEntries);
+			string[] strings = line.Split(new[] { '\r', '\n', });
 
 			IMessage result = Parse(strings);
 

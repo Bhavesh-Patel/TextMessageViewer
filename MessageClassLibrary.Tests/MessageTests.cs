@@ -80,6 +80,22 @@ namespace MessageClassLibrary.Tests
 		}
 
 		[TestMethod]
+		public void ValidateHashCode()
+		{
+			const string messageText = "Message";
+			const string @from = "from";
+			const string to = "to";
+			DateTime dateTime = new DateTime();
+			Message message = new Message(messageText, @from, to, dateTime);
+			int hashCode = message.GetHashCode();
+
+			string hashString = message.MessageText + message.From + message.To + message.DateTime.ToString();
+			int expectedHashCode = hashString.GetHashCode();
+
+			Assert.AreEqual(expectedHashCode, hashCode);
+		}
+
+		[TestMethod]
 		[ExpectedException(typeof(ArgumentNullException))]
 		public void NullValueInvalidForMessageTest()
 		{
