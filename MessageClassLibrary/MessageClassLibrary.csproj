@@ -43,8 +43,10 @@
     <Compile Include="IMessageParser.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="IMessageProvider.cs" />
     <Compile Include="IMessageReader.cs" />
     <Compile Include="Message.cs" />
+    <Compile Include="TextMessages\TextMessageProvider.cs" />
     <Compile Include="TextMessages\TextMessageReader.cs" />
     <Compile Include="TextMessages\MessageFormat.cs" />
     <Compile Include="TextMessages\MotorolaTextMessageParser.cs">

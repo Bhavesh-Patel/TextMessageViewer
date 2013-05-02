@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using MessageClassLibrary;
@@ -14,9 +15,25 @@ namespace MessageViewer.ViewModels
 
 		public MessagesViewModel()
 		{
-			const string path = @"..\..\..\Messages\V3i\Inbox";
-			TextMessageReader textMessageReader = new TextMessageReader { MessageParser = new MotorolaTextMessageParser() };
-			IEnumerable<IMessage> messages = textMessageReader.ReadTextMessages(path);
+			Messages = new ObservableCollection<MessageViewModel>();
+			for (int i = 0; i < 5; i++) {
+				MessageViewModel messageViewModel = new MessageViewModel(new Message("Message" + i, "From" + i, "To" + i, DateTime.Now));
+				Messages.Add(messageViewModel);
+			}
+			CurrentMessage = Messages.First();
+		}
+
+		public MessagesViewModel(string path, MessageFormat format)
+		{
+			CreateMessages(path, format);
+		}
+
+		private void CreateMessages(string path, MessageFormat format)
+		{
+			TextMessageProvider provider = new TextMessageProvider(path, format);
+
+			IEnumerable<IMessage> messages = provider.Messages;
+
 			IEnumerable<MessageViewModel> messageViewModels =
 				messages.OrderBy(t => t.DateTime).Select(t => new MessageViewModel(t));
 			Messages = new ObservableCollection<MessageViewModel>(messageViewModels);

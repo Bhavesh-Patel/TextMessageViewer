@@ -7,6 +7,6 @@
 	Width="640" Height="480">
 
 	<Grid x:Name="LayoutRoot" Background="White">
-	<local:MessagesView/>
+	<local:MessagesView x:Name="messagesView"/>
 	</Grid>
 </Window>

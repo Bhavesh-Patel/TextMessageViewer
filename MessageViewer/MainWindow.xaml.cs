@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using MessageClassLibrary.TextMessages;
+using MessageViewer.ViewModels;
 
 namespace MessageViewer
 {
@@ -11,7 +13,7 @@ namespace MessageViewer
 		{
 			this.InitializeComponent();
 
-			// Insert code required on object creation below this point.
+			messagesView.DataContext = new MessagesViewModel(@"..\..\..\Messages\V3i\Inbox", MessageFormat.Motorola);
 		}
 	}
 }
