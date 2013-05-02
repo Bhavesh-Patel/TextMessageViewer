@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using MessageClassLibrary;
-using MessageClassLibrary.TextMessages;
 
 namespace MessageViewer.ViewModels
 {
 	public class MessagesViewModel
 	{
+		private IMessageProvider provider;
+
 		public ObservableCollection<MessageViewModel> Messages { get; set; }
 
 		public MessageViewModel CurrentMessage { get; set; }
@@ -23,15 +24,14 @@ namespace MessageViewer.ViewModels
 			CurrentMessage = Messages.First();
 		}
 
-		public MessagesViewModel(string path, MessageFormat format)
+		public MessagesViewModel(IMessageProvider provider)
 		{
-			CreateMessages(path, format);
+			this.provider = provider;
+			CreateMessageViewModels();
 		}
 
-		private void CreateMessages(string path, MessageFormat format)
+		private void CreateMessageViewModels()
 		{
-			TextMessageProvider provider = new TextMessageProvider(path, format);
-
 			IEnumerable<IMessage> messages = provider.Messages;
 
 			IEnumerable<MessageViewModel> messageViewModels =
