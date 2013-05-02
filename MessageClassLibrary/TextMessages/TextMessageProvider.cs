@@ -6,28 +6,26 @@ namespace MessageClassLibrary.TextMessages
 	{
 		private IEnumerable<IMessage> messages;
 
-		public string Path { get; set; }
+		private readonly IMessageReader textMessageReader;
 
-		public MessageFormat Format { get; set; }
+		private string Path { get; set; }
 
 		public IEnumerable<IMessage> Messages
 		{
-			get { return messages ?? (messages = CreateTextMessages()); }
+			get { return messages ?? (messages = CreateTextMessages(Path)); }
 		}
 
 		public TextMessageProvider(string path, MessageFormat format)
 		{
 			Path = path;
-			Format = format;
+			MessageFormat messageFormat = format;
+			IMessageParser messageParser = messageFormat == MessageFormat.Motorola ? (IMessageParser) new MotorolaTextMessageParser() : new NokiaTextMessageParser();
+			textMessageReader = new TextMessageReader { MessageParser = messageParser };
 		}
 
-		private IEnumerable<IMessage> CreateTextMessages()
+		protected virtual IEnumerable<IMessage> CreateTextMessages(string path)
 		{
-			IMessageReader textMessageReader = new TextMessageReader {
-				MessageParser =
-					Format == MessageFormat.Motorola ? (IMessageParser) new MotorolaTextMessageParser() : new NokiaTextMessageParser()
-			};
-			IEnumerable<IMessage> result = textMessageReader.ReadTextMessages(Path);
+			IEnumerable<IMessage> result = textMessageReader.ReadTextMessages(path);
 
 			return result;
 		}

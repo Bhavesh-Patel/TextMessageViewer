@@ -13,7 +13,7 @@ namespace MessageViewer
 		{
 			this.InitializeComponent();
 
-			TextMessageProvider textMessageProvider = new TextMessageProvider(@"..\..\..\Messages\V3i\Inbox", MessageFormat.Motorola);
+			TextMessageProvider textMessageProvider = new TextMessageRecursiveProvider(@"..\..\..\Messages\6230", MessageFormat.Nokia);
 			messagesView.DataContext = new MessagesViewModel(textMessageProvider);
 		}
 	}
