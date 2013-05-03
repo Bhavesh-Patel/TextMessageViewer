@@ -4,17 +4,33 @@ using System.Linq;
 
 namespace MessageClassLibrary.TextMessages
 {
-	public class TextMessageRecursiveProvider : TextMessageProvider
+	public class TextMessageRecursiveProvider : CompositeMessageProvider
 	{
+		private string Path { get; set; }
+
+		private MessageFormat Format { get; set; }
+
 		public TextMessageRecursiveProvider(string path, MessageFormat format)
-			: base(path, format)
 		{
+			Path = path;
+			Format = format;
 		}
 
-		protected override IEnumerable<IMessage> CreateTextMessages(string path)
+		protected override IEnumerable<IMessage> CreateMessages()
+		{
+			IEnumerable<IMessage> result = CreateTextMessages(Path);
+			
+			return result;
+		}
+
+		private IEnumerable<IMessage> CreateTextMessages(string path)
 		{
 			IEnumerable<string> directories = Directory.GetDirectories(path);
-			IEnumerable<IMessage> result = directories.SelectMany(base.CreateTextMessages);
+			IEnumerable<TextMessageProvider> textMessageProviders =
+				directories.Select(directory => new TextMessageProvider(directory, Format));
+			AddRange(textMessageProviders);
+
+			IEnumerable<IMessage> result = base.CreateMessages();
 
 			return result;
 		}
