@@ -15,15 +15,18 @@ namespace MessageClassLibrary.TextMessages
 			get { return messages ?? (messages = CreateTextMessages(Path)); }
 		}
 
-		public TextMessageProvider(string path, MessageFormat format)
+		public string Name { get; private set; }
+
+		public TextMessageProvider(string name, string path, MessageFormat format)
 		{
+			Name = name;
 			Path = path;
 			MessageFormat messageFormat = format;
 			IMessageParser messageParser = messageFormat == MessageFormat.Motorola ? (IMessageParser) new MotorolaTextMessageParser() : new NokiaTextMessageParser();
 			textMessageReader = new TextMessageReader { MessageParser = messageParser };
 		}
 
-		protected virtual IEnumerable<IMessage> CreateTextMessages(string path)
+		private IEnumerable<IMessage> CreateTextMessages(string path)
 		{
 			IEnumerable<IMessage> result = textMessageReader.ReadTextMessages(path);
 

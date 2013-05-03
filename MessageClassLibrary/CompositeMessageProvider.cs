@@ -14,6 +14,8 @@ namespace MessageClassLibrary
 			}
 		}
 
+		public string Name { get; private set; }
+
 		protected virtual IEnumerable<IMessage> CreateMessages()
 		{
 			IEnumerable<IMessage> result = Providers.SelectMany(p => p.Messages);
@@ -22,8 +24,9 @@ namespace MessageClassLibrary
 
 		protected IEnumerable<IMessageProvider> Providers { get; private set; }
 
-		public CompositeMessageProvider(params IMessageProvider[] providers)
+		public CompositeMessageProvider(string name, params IMessageProvider[] providers)
 		{
+			Name = name;
 			Providers = providers;
 		}
 

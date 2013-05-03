@@ -5,5 +5,7 @@ namespace MessageClassLibrary
 	public interface IMessageProvider
 	{
 		IEnumerable<IMessage> Messages { get; }
+
+		string Name { get; }
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using MessageClassLibrary;
 using MessageClassLibrary.TextMessages;
 using MessageViewer.ViewModels;
 
@@ -13,7 +14,7 @@ namespace MessageViewer
 		{
 			this.InitializeComponent();
 
-			TextMessageProvider textMessageProvider = new TextMessageRecursiveProvider(@"..\..\..\Messages\6230", MessageFormat.Nokia);
+			IMessageProvider textMessageProvider = new TextMessageRecursiveProvider("Nokia 6230", @"..\..\..\Messages\6230", MessageFormat.Nokia);
 			messagesView.DataContext = new MessagesViewModel(textMessageProvider);
 		}
 	}
