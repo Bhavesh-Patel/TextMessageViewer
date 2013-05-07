@@ -8,11 +8,13 @@ namespace MessageViewer.ViewModels
 {
 	public class MessagesViewModel
 	{
-		private IMessageProvider provider;
+		public IMessageProvider Provider { get; private set; }
 
 		public ObservableCollection<MessageViewModel> Messages { get; set; }
 
 		public MessageViewModel CurrentMessage { get; set; }
+
+		public string Name { get { return Provider == null ? "<NO NAME>" : Provider.Name; } }
 
 		public MessagesViewModel()
 		{
@@ -26,13 +28,13 @@ namespace MessageViewer.ViewModels
 
 		public MessagesViewModel(IMessageProvider provider)
 		{
-			this.provider = provider;
+			this.Provider = provider;
 			CreateMessageViewModels();
 		}
 
 		private void CreateMessageViewModels()
 		{
-			IEnumerable<IMessage> messages = provider.Messages;
+			IEnumerable<IMessage> messages = Provider.Messages;
 
 			IEnumerable<MessageViewModel> messageViewModels =
 				messages.OrderBy(t => t.DateTime).Select(t => new MessageViewModel(t));
