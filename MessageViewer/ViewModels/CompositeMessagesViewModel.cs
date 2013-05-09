@@ -6,7 +6,7 @@ using MessageClassLibrary;
 
 namespace MessageViewer.ViewModels
 {
-	public class CompositeMessagesViewModel : INotifyPropertyChanged
+	public class CompositeMessagesViewModel : MessagesViewModel, INotifyPropertyChanged
 	{
 		private MessagesViewModel currentProvider;
 
@@ -24,12 +24,16 @@ namespace MessageViewer.ViewModels
 
 		public CompositeMessagesViewModel()
 		{
-			MessageProviders = new[] {new MessagesViewModel(), new MessagesViewModel()};
+			MessageProviders = new[] { new MessagesViewModel(), new MessagesViewModel() };
 		}
 
-		public CompositeMessagesViewModel(IEnumerable<IMessageProvider> providers)
+		public CompositeMessagesViewModel(CompositeMessageProvider provider)
+			: base(provider)
 		{
-			MessageProviders = providers.Select(messageProvider => new MessagesViewModel(messageProvider));
+			MessageProviders = provider.Providers.Select(mp =>
+				mp is CompositeMessageProvider
+					? (MessagesViewModel) new CompositeMessagesViewModel(mp as CompositeMessageProvider)
+					: new MessagesViewModel(mp));
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;

@@ -16,25 +16,15 @@ namespace MessageClassLibrary.TextMessages
 		{
 			Path = path;
 			Format = format;
+			CreateProviders(Path);
 		}
 
-		protected override IEnumerable<IMessage> CreateMessages()
-		{
-			IEnumerable<IMessage> result = CreateTextMessages(Path);
-
-			return result;
-		}
-
-		private IEnumerable<IMessage> CreateTextMessages(string path)
+		private void CreateProviders(string path)
 		{
 			IEnumerable<string> directories = Directory.GetDirectories(path);
 			IEnumerable<TextMessageProvider> textMessageProviders =
-				directories.Select(directory => new TextMessageProvider(SystemPath.GetDirectoryName(directory), directory, Format));
+				directories.Select(directory => new TextMessageProvider(SystemPath.GetFileName(directory), directory, Format));
 			AddRange(textMessageProviders);
-
-			IEnumerable<IMessage> result = base.CreateMessages();
-
-			return result;
 		}
 	}
 }

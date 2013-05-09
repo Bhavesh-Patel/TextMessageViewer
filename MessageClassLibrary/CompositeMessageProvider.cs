@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace MessageClassLibrary
 {
-	public class CompositeMessageProvider: IMessageProvider
+	public class CompositeMessageProvider : IMessageProvider
 	{
 		public IEnumerable<IMessage> Messages
 		{
@@ -16,13 +16,13 @@ namespace MessageClassLibrary
 
 		public string Name { get; private set; }
 
-		protected virtual IEnumerable<IMessage> CreateMessages()
+		protected IEnumerable<IMessage> CreateMessages()
 		{
 			IEnumerable<IMessage> result = Providers.SelectMany(p => p.Messages);
 			return result;
 		}
 
-		protected IEnumerable<IMessageProvider> Providers { get; private set; }
+		public IEnumerable<IMessageProvider> Providers { get; private set; }
 
 		public CompositeMessageProvider(string name, params IMessageProvider[] providers)
 		{
@@ -32,7 +32,7 @@ namespace MessageClassLibrary
 
 		public void Add(IMessageProvider provider)
 		{
-			AddRange(new[] {provider});
+			AddRange(new[] { provider });
 		}
 
 		public void AddRange(IEnumerable<IMessageProvider> providers)
