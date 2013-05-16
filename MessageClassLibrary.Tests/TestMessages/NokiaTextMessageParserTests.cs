@@ -42,7 +42,7 @@ TEL:
 Date:{1}
 {2}
 ", from, dateTime, messageText);
-			//string[] fileLines = File.ReadAllText(@"D:\Users - Manual\bhavesh\Source\Repos\TextMessageViewer\Messages\8310i\Inbox\3.vmg").Replace("\0", "").Replace("\r", "").Split(new char[] { '\n' });
+			//string[] fileLines = File.ReadAllText(@"D:\Users - Manual\bhavesh\Source\Repos\TextMessageViewer\Resources\Messages\8310i\Inbox\3.vmg").Replace("\0", "").Replace("\r", "").Split(new char[] { '\n' });
 			string[] fileLines = nokiaMessageText.Split(new char[] { '\n' });
 
 			IMessage textMessage = nokiaTextMessageParser.Parse(fileLines);
@@ -81,7 +81,7 @@ TEL:{0}
 Date:{1}
 {2}
 ", to, dateTime, messageText);
-			//string[] fileLines = File.ReadAllText(@"D:\Users - Manual\bhavesh\Source\Repos\TextMessageViewer\Messages\8310i\Inbox\3.vmg").Replace("\0", "").Replace("\r", "").Split(new char[] { '\n' });
+			//string[] fileLines = File.ReadAllText(@"D:\Users - Manual\bhavesh\Source\Repos\TextMessageViewer\Resources\Messages\8310i\Inbox\3.vmg").Replace("\0", "").Replace("\r", "").Split(new char[] { '\n' });
 			string[] fileLines = nokiaMessageText.Split(new char[] { '\n' });
 
 			IMessage textMessage = nokiaTextMessageParser.Parse(fileLines);
