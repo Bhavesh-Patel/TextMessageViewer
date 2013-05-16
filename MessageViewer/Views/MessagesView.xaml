@@ -28,9 +28,9 @@
             
             <ListView.View>
         		<GridView>
-                    <GridViewColumn Header="From" DisplayMemberBinding="{Binding Path=Message.From}"/>
+                    <GridViewColumn Header="From" DisplayMemberBinding="{Binding Path=FromContact}"/>
                     <GridViewColumn Header="Message" DisplayMemberBinding="{Binding Path=Message.MessageText}"/>
-                    <GridViewColumn Header="To" DisplayMemberBinding="{Binding Path=Message.To}"/>
+                    <GridViewColumn Header="To" DisplayMemberBinding="{Binding Path=ToContact}"/>
                     <GridViewColumn Header="Date and Time" DisplayMemberBinding="{Binding Path=Message.DateTime}"/>
         		</GridView>
         	</ListView.View>

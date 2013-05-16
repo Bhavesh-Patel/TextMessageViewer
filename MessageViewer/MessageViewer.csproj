@@ -110,6 +110,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Contacts\Contacts.csproj">
+      <Project>{A5FC862A-A05E-473B-8032-A171B6411331}</Project>
+      <Name>Contacts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MessageClassLibrary\MessageClassLibrary.csproj">
       <Project>{83de2cda-aacf-4783-b838-4dcc4905cbac}</Project>
       <Name>MessageClassLibrary</Name>
