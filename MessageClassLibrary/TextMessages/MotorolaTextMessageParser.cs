@@ -4,16 +4,21 @@ using System.Linq;
 
 namespace MessageClassLibrary.TextMessages
 {
+	/// <summary>Parser of Motorola text message files.</summary>
 	public class MotorolaTextMessageParser : IMessageParser
 	{
+		#region Public Methods
+		/// <summary>Parses the specified lines.</summary>
+		/// <param name="lines">The lines.</param>
+		/// <returns>A <see cref="IMessage" /> composed from the given lines.</returns>
 		public IMessage Parse(IEnumerable<string> lines)
 		{
-		//	string[] strings = lines.ToArray();
-		//	string contact = strings[0].Substring("Contact: ".Length);
-		//	string dateTimeString = strings[1].Substring("Date: ".Length);
-		//	DateTime dateTime = DateTime.Parse(dateTimeString);
-		//	string message = strings[3];
-		//	IMessage result = new Message(message, contact, null, dateTime);
+			//	string[] strings = lines.ToArray();
+			//	string contact = strings[0].Substring("Contact: ".Length);
+			//	string dateTimeString = strings[1].Substring("Date: ".Length);
+			//	DateTime dateTime = DateTime.Parse(dateTimeString);
+			//	string message = strings[3];
+			//	IMessage result = new Message(message, contact, null, dateTime);
 
 			List<string> fileLines = new List<string>(lines.Select(s => s.Replace("\0", "")));
 			//From/To number line = 1
@@ -45,6 +50,9 @@ namespace MessageClassLibrary.TextMessages
 			return result;
 		}
 
+		/// <summary>Parses the specified line.</summary>
+		/// <param name="line">The line.</param>
+		/// <returns>A <see cref="IMessage" /> composed from the given line.</returns>
 		public IMessage Parse(string line)
 		{
 			string[] strings = line.Split(new[] { '\r', '\n', });
@@ -52,6 +60,7 @@ namespace MessageClassLibrary.TextMessages
 			IMessage result = Parse(strings);
 
 			return result;
-		}
+		} 
+		#endregion
 	}
 }

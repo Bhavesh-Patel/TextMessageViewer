@@ -2,6 +2,7 @@
 
 namespace Contacts.Tests
 {
+	/// <summary>Test class for <see cref="ContactResolver"/></summary>
 	[TestClass]
 	public class ContactResolverTests
 	{
@@ -64,7 +65,6 @@ namespace Contacts.Tests
 			Assert.AreEqual(null, resolveContactName);
 		}
 
-
 		[TestMethod]
 		public void UnableToResolvePhoneNumberWithLessThan11Digits()
 		{
@@ -86,7 +86,6 @@ namespace Contacts.Tests
 
 			Assert.AreEqual("T-Mobile", resolveContactName);
 		}
-
 
 		[TestMethod]
 		[Ignore]

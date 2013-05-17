@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MessageClassLibrary.Tests
 {
+	/// <summary>Test class for <see cref="Message"/></summary>
 	[TestClass]
 	public class MessageTests
 	{

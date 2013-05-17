@@ -4,8 +4,13 @@ using System.Linq;
 
 namespace MessageClassLibrary.TextMessages
 {
+	/// <summary>Parser of Nokia text message files.</summary>
 	public class NokiaTextMessageParser : IMessageParser
 	{
+		#region Public Methods
+		/// <summary>Parses the specified lines.</summary>
+		/// <param name="lines">The lines.</param>
+		/// <returns>A <see cref="IMessage" /> composed from the given lines.</returns>
 		public IMessage Parse(IEnumerable<string> lines)
 		{
 			//removing \0 (null) and \r
@@ -51,6 +56,9 @@ namespace MessageClassLibrary.TextMessages
 			return result;
 		}
 
+		/// <summary>Parses the specified line.</summary>
+		/// <param name="line">The line.</param>
+		/// <returns>A <see cref="IMessage" /> composed from the given line.</returns>
 		public IMessage Parse(string line)
 		{
 			string[] strings = line.Split(new[] { '\r', '\n', });
@@ -58,6 +66,7 @@ namespace MessageClassLibrary.TextMessages
 			IMessage result = Parse(strings);
 
 			return result;
-		}
+		} 
+		#endregion
 	}
 }

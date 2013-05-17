@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using MessageClassLibrary.TextMessages;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MessageClassLibrary.Tests.TestMessages
 {
-	/// <summary>
-	/// Summary description for NokiaMessageParserTests
-	/// </summary>
+	/// <summary>Test class for <see cref="NokiaTextMessageParser"/></summary>
 	[TestClass]
 	public class NokiaTextMessageParserTests
 	{
@@ -160,7 +155,6 @@ END:VMSG
 			Assert.AreEqual(textMessage, expectedResult);
 		}
 
-
 		[TestMethod]
 		public void NewFormatSingleLineParseTest()
 		{
@@ -177,7 +171,5 @@ END:VMSG
 
 			Assert.AreEqual(textMessage, expectedResult);
 		}
-
-
 	}
 }

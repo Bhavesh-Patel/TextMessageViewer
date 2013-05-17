@@ -1,12 +1,9 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MessageClassLibrary.TextMessages;
 
 namespace MessageClassLibrary.Tests.TestMessages
 {
-	/// <summary>Summary description for MessageNameFormatAttributeTests</summary>
+	/// <summary>Test class for <see cref="MessageNameFormatAttribute"/></summary>
 	[TestClass]
 	public class MessageNameFormatAttributeTests
 	{
@@ -14,7 +11,7 @@ namespace MessageClassLibrary.Tests.TestMessages
 		public void FileFormatTest()
 		{
 			string motorolaMessageFormat = MessageNameFormatAttribute.FileFormat(MessageFormat.Motorola);
-			string expectedMessageFormat = "recu*.txt";
+			const string expectedMessageFormat = "recu*.txt";
 
 			Assert.AreEqual(expectedMessageFormat, motorolaMessageFormat);
 		}

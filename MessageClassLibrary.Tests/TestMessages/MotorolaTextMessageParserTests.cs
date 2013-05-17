@@ -4,9 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MessageClassLibrary.Tests.TestMessages
 {
-	/// <summary>
-	/// Summary description for MotorolaTextMessageParserTests
-	/// </summary>
+	/// <summary>Test class for <see cref="MotorolaTextMessageParser"/></summary>
 	[TestClass]
 	public class MotorolaTextMessageParserTests
 	{
